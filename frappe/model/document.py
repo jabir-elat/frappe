@@ -804,13 +804,13 @@ class Document(BaseDocument):
 			self.check_docstatus_transition(0)
 			return
 
-		if cstr(previous.modified) != cstr(self._original_modified):
-			frappe.msgprint(
-				_("Error: Document has been modified after you have opened it")
-				+ (f" ({previous.modified}, {self.modified}). ")
-				+ _("Please refresh to get the latest document."),
-				raise_exception=frappe.TimestampMismatchError,
-			)
+		# if cstr(previous.modified) != cstr(self._original_modified):
+		# 	frappe.msgprint(
+		# 		_("Error: Document has been modified after you have opened it")
+		# 		+ (f" ({previous.modified}, {self.modified}). ")
+		# 		+ _("Please refresh to get the latest document."),
+		# 		raise_exception=frappe.TimestampMismatchError,
+		# 	)
 
 		if not self.meta.issingle:
 			self.check_docstatus_transition(previous.docstatus)
